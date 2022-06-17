@@ -1,6 +1,7 @@
 package com.bnpp.berlinclock
 
 import com.bnpp.berlinclock.LampColor.*
+import com.bnpp.berlinclock.model.Minutes
 import com.google.common.truth.Truth.assertThat
 import org.junit.Before
 import org.junit.Test
@@ -54,5 +55,16 @@ class BerlinClockTest {
         val lampStatus = berlinClock.getSeconds(21)
 
         assertThat(lampStatus).isEqualTo(OFF)
+    }
+
+    @Test
+    fun `should return off for all lamp when minute is 0`(){
+        val lampStatus = berlinClock.getMinutes(0)
+
+        val topLamps = listOf(OFF, OFF, OFF, OFF, OFF, OFF, OFF, OFF, OFF, OFF, OFF)
+        val bottomLamps = listOf(OFF, OFF, OFF, OFF)
+        val expectedLampColor = Minutes(topLamps, bottomLamps)
+
+        assertThat(lampStatus).isEqualTo(expectedLampColor)
     }
 }
