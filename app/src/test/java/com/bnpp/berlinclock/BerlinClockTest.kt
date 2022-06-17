@@ -33,4 +33,11 @@ class BerlinClockTest {
 
         assertThat(lampStatus).isEqualTo(YELLOW)
     }
+
+    @Test
+    fun `should return off color for 3 seconds`(){
+        val lampStatus = berlinClock.getSeconds(3)
+
+        assertThat(lampStatus).isEqualTo(OFF)
+    }
 }
