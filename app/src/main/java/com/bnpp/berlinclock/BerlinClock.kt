@@ -14,6 +14,10 @@ class BerlinClock {
             in 1..4 -> Minutes(
                 bottomLamps = getBottomLampsColor(minutes)
             )
+            5 -> {
+                val topMinutes = listOf(YELLOW, OFF, OFF, OFF, OFF, OFF, OFF, OFF, OFF, OFF, OFF)
+                Minutes(topMinutes, bottomLamps = Minutes.defaultBottom())
+            }
             else -> Minutes()
         }
     }
