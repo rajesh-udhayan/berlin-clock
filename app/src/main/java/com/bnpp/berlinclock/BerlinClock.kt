@@ -38,13 +38,18 @@ class BerlinClock {
 
     private fun getTopLampsColor(lampsCount: Int): List<LampColor> {
         val lampColors: MutableList<LampColor> = Minutes.defaultTop()
-        (1..lampsCount).forEach{ i ->
-            lampColors[i-1] = YELLOW
+        (1..lampsCount).forEach { i ->
+            if (i.multiplesOfThree()) {
+                lampColors[i - 1] = RED
+            } else {
+                lampColors[i - 1] = YELLOW
+            }
         }
         return lampColors
     }
 
     private fun Int.greaterThanOrEqualsFive() = this >= 5
     private fun Int.lessThanFive() = this < 5
+    private fun Int.multiplesOfThree() = this % 3 == 0
 
 }
