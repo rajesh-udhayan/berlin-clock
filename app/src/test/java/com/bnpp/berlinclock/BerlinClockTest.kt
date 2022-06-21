@@ -155,4 +155,14 @@ class BerlinClockTest {
 
         assertThat(lampStatus).isEqualTo(expectedLampColor)
     }
+
+    @Test
+    fun `should return first six top lamps as on when minutes is 30`() {
+        val result = berlinClock.getMinutes(30)
+
+        val minutesOnTop = listOf(YELLOW, YELLOW, RED, YELLOW, YELLOW, RED, OFF, OFF, OFF, OFF, OFF)
+        val minutesOnBottom = listOf(OFF, OFF, OFF, OFF)
+        val expectedResult = Minutes(topLamps = minutesOnTop, bottomLamps = minutesOnBottom)
+        assertThat(expectedResult).isEqualTo(result)
+    }
 }
