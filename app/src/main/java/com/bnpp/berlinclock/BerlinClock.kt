@@ -49,14 +49,20 @@ class BerlinClock {
         return lampColors
     }
 
-    fun getHours(hours: Int): Hours {
-        return when (hours) {
-            1 -> Hours(bottomLamps = listOf(RED, OFF, OFF, OFF))
-            2 -> Hours(bottomLamps = listOf(RED, RED, OFF, OFF))
-            3 -> Hours(bottomLamps = listOf(RED, RED, RED, OFF))
-            4 -> Hours(bottomLamps = listOf(RED, RED, RED, RED))
-            else -> Hours()
+    fun getHours(hours: Int): Hours = when {
+        hours.lessThanFive() -> getLampsForLessThanFiveHours(hours)
+        else -> Hours()
+    }
+
+    private fun getLampsForLessThanFiveHours(hours: Int): Hours =
+        Hours(bottomLamps = getHoursLampsColor(hours))
+
+    private fun getHoursLampsColor(hours: Int): MutableList<LampColor> {
+        val lampColor: MutableList<LampColor> = Hours.default()
+        (1..hours).forEach { i ->
+            lampColor[i - 1] = RED
         }
+        return lampColor
     }
 
     private fun Int.greaterThanOrEqualsFive() = this >= 5
