@@ -51,6 +51,9 @@ class BerlinClock {
 
     fun getHours(hours: Int): Hours = when {
         hours.lessThanFive() -> getLampsForLessThanFiveHours(hours)
+        hours == 5 -> {
+            Hours(topLamps = listOf(RED,OFF, OFF, OFF), bottomLamps = Hours.default())
+        }
         else -> Hours()
     }
 
