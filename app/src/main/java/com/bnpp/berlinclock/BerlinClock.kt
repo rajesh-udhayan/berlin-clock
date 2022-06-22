@@ -1,6 +1,7 @@
 package com.bnpp.berlinclock
 
 import com.bnpp.berlinclock.LampColor.*
+import com.bnpp.berlinclock.model.Hours
 import com.bnpp.berlinclock.model.Minutes
 
 class BerlinClock {
@@ -48,8 +49,13 @@ class BerlinClock {
         return lampColors
     }
 
+    fun getHours(hours: Int): Hours {
+        return Hours()
+    }
+
     private fun Int.greaterThanOrEqualsFive() = this >= 5
     private fun Int.lessThanFive() = this < 5
     private fun Int.multiplesOfThree() = this % 3 == 0
+
 
 }
