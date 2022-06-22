@@ -1,11 +1,13 @@
 package com.bnpp.berlinclock
 
 import com.bnpp.berlinclock.LampColor.*
+import com.bnpp.berlinclock.model.BerlinClockData
 import com.bnpp.berlinclock.model.Hours
 import com.bnpp.berlinclock.model.Minutes
 import com.google.common.truth.Truth.assertThat
 import org.junit.Before
 import org.junit.Test
+import kotlin.math.min
 
 class BerlinClockTest {
 
@@ -277,6 +279,22 @@ class BerlinClockTest {
         val hoursOnTop = listOf(RED, RED, RED, RED)
         val hoursOnBottom = listOf(RED, RED, RED, RED)
         val expectedResult = Hours(topLamps = hoursOnTop, bottomLamps = hoursOnBottom)
+
+        assertThat(expectedResult).isEqualTo(result)
+    }
+
+    @Test
+    fun `should return expected result for random time`(){
+        val result = berlinClock.getBerlinClock("04:45:24")
+
+        val hoursOnTop = listOf(OFF,OFF,OFF,OFF)
+        val hoursOnBottom = listOf(RED,RED,RED,RED)
+        val hoursLamp = Hours(hoursOnTop,hoursOnBottom)
+        val minutesOnTop = listOf(YELLOW,YELLOW,RED,YELLOW,YELLOW,RED,YELLOW,YELLOW,RED,OFF,OFF)
+        val minutesOnBottom = listOf(OFF,OFF,OFF,OFF)
+        val minutesLamp = Minutes(minutesOnTop,minutesOnBottom)
+        val secondsLamp = YELLOW
+        val expectedResult = BerlinClockData(secondsLamp, minutesLamp, hoursLamp)
 
         assertThat(expectedResult).isEqualTo(result)
     }

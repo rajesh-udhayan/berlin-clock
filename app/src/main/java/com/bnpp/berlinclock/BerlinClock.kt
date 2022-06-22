@@ -1,10 +1,20 @@
 package com.bnpp.berlinclock
 
 import com.bnpp.berlinclock.LampColor.*
+import com.bnpp.berlinclock.model.BerlinClockData
 import com.bnpp.berlinclock.model.Hours
 import com.bnpp.berlinclock.model.Minutes
 
 class BerlinClock {
+
+    fun getBerlinClock(time: String): BerlinClockData {
+        val timeSplit = time.split(":")
+        val hours = getHours(timeSplit[0].toInt())
+        val minutes = getMinutes(timeSplit[1].toInt())
+        val seconds = getSeconds(timeSplit[2].toInt())
+
+        return BerlinClockData(seconds, minutes, hours)
+    }
 
     fun getSeconds(seconds: Int): LampColor =
         if (seconds % 2 == 0) YELLOW
