@@ -198,7 +198,7 @@ class BerlinClockTest {
     }
 
     @Test
-    fun `should return first bottom lamp as yellow and others as off when hour is 1`(){
+    fun `should return first bottom lamp as red and others as off when hour is 1`(){
         val result = berlinClock.getHours(1)
 
         val hoursOnBottom = listOf(RED,OFF,OFF,OFF)
