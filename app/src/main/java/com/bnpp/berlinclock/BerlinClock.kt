@@ -53,6 +53,9 @@ class BerlinClock {
         if (hours == 1){
             return Hours(bottomLamps = listOf(RED,OFF,OFF,OFF))
         }
+        if (hours == 2){
+            return Hours(bottomLamps = listOf(RED,RED,OFF,OFF))
+        }
         return Hours()
     }
 
