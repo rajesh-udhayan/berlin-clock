@@ -298,4 +298,20 @@ class BerlinClockTest {
 
         assertThat(expectedResult).isEqualTo(result)
     }
+
+    @Test
+    fun `should return expected result when time is 24 hours`(){
+        val result = berlinClock.getBerlinClock("24:00:00")
+
+        val hoursOnTop = listOf(RED,RED,RED,RED)
+        val hoursOnBottom = listOf(RED,RED,RED,RED)
+        val hoursLamp = Hours(hoursOnTop,hoursOnBottom)
+        val minutesOnTop = listOf(OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF)
+        val minutesOnBottom = listOf(OFF,OFF,OFF,OFF)
+        val minutesLamp = Minutes(minutesOnTop,minutesOnBottom)
+        val secondsLamp = YELLOW
+        val expectedResult = BerlinClockData(secondsLamp, minutesLamp, hoursLamp)
+
+        assertThat(expectedResult).isEqualTo(result)
+    }
 }
