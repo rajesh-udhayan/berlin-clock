@@ -51,12 +51,18 @@ class BerlinClock {
 
     fun getHours(hours: Int): Hours = when {
         hours.lessThanFive() -> getLampsForLessThanFiveHours(hours)
-        hours == 5 -> {
-            Hours(topLamps = listOf(RED,OFF, OFF, OFF), bottomLamps = Hours.default())
-        }
+        hours.greaterThanOrEqualsFive() -> getLampsForGreaterThanFiveHours(hours)
         else -> Hours()
     }
 
+    private fun getLampsForGreaterThanFiveHours(hours: Int): Hours {
+        val topLampsCount = hours / 5
+        val bottomLampsCount = hours % 5
+        return Hours(
+            getHoursLampsColor(topLampsCount),
+            getHoursLampsColor(bottomLampsCount)
+        )
+    }
     private fun getLampsForLessThanFiveHours(hours: Int): Hours =
         Hours(bottomLamps = getHoursLampsColor(hours))
 
