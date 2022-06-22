@@ -50,13 +50,11 @@ class BerlinClock {
     }
 
     fun getHours(hours: Int): Hours {
-        if (hours == 1){
-            return Hours(bottomLamps = listOf(RED,OFF,OFF,OFF))
+        return when (hours) {
+            1 -> Hours(bottomLamps = listOf(RED, OFF, OFF, OFF))
+            2 -> Hours(bottomLamps = listOf(RED, RED, OFF, OFF))
+            else -> Hours()
         }
-        if (hours == 2){
-            return Hours(bottomLamps = listOf(RED,RED,OFF,OFF))
-        }
-        return Hours()
     }
 
     private fun Int.greaterThanOrEqualsFive() = this >= 5
