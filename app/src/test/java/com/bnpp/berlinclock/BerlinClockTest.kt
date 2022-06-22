@@ -196,4 +196,14 @@ class BerlinClockTest {
 
         assertThat(expectedResult).isEqualTo(result)
     }
+
+    @Test
+    fun `should return first bottom lamp as yellow and others as off when hour is 1`(){
+        val result = berlinClock.getHours(1)
+
+        val hoursOnBottom = listOf(RED,OFF,OFF,OFF)
+        val expectedResult = Hours(bottomLamps = hoursOnBottom)
+
+        assertThat(expectedResult).isEqualTo(result)
+    }
 }

@@ -50,6 +50,9 @@ class BerlinClock {
     }
 
     fun getHours(hours: Int): Hours {
+        if (hours == 1){
+            return Hours(bottomLamps = listOf(RED,OFF,OFF,OFF))
+        }
         return Hours()
     }
 
