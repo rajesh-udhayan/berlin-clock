@@ -6,12 +6,17 @@ import androidx.lifecycle.ViewModel
 import com.bnpp.berlinclock.BerlinClock
 import com.bnpp.berlinclock.model.BerlinClockData
 
-class BerlinClockViewModel(private val berlinClock: BerlinClock): ViewModel() {
+class BerlinClockViewModel(private val berlinClock: BerlinClock) : ViewModel() {
 
     private var mBerlinClockTime = MutableLiveData<BerlinClockData>()
     val berlinClockTime: LiveData<BerlinClockData> = mBerlinClockTime
 
-    fun initBerlinClock(){
+    fun initBerlinClock() {
         mBerlinClockTime.postValue(BerlinClockData.default())
+    }
+
+    fun updateTime(time: String) {
+        val result = berlinClock.getBerlinClock(time)
+        mBerlinClockTime.postValue(result)
     }
 }
