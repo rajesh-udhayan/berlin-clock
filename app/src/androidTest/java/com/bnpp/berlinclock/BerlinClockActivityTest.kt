@@ -2,10 +2,10 @@ package com.bnpp.berlinclock
 
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.test.filters.LargeTest
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
-import androidx.test.runner.AndroidJUnitRunner
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -33,6 +33,15 @@ class BerlinClockActivityTest {
             val title = onNodeWithText("BerlinClock")
 
             title.assertIsDisplayed()
+        }
+    }
+
+    @Test
+    fun shouldDisplaySecondsButton(){
+        with(composeTestRule){
+            val secondsButton = onNodeWithTag("secondsButton")
+
+            secondsButton.assertIsDisplayed()
         }
     }
 }
