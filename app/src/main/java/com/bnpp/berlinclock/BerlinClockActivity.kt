@@ -12,10 +12,12 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.bnpp.berlinclock.ui.theme.BerlinClockTheme
+import com.bnpp.berlinclock.ui.theme.yellowDisabled
+import com.bnpp.berlinclock.ui.theme.yellowEnabled
 
 class BerlinClockActivity : ComponentActivity() {
 
@@ -55,7 +57,7 @@ fun BerlinClockView() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         val enabled = true
-        val color = if (enabled) Color(0xFFFFFF33) else Color(0xFF666633)
+        val color = if (enabled) yellowEnabled else yellowDisabled
         Button(
             modifier = Modifier
                 .size(100.dp)
@@ -67,14 +69,4 @@ fun BerlinClockView() {
         ) {
         }
     }
-}
-
-@Composable
-fun BerlinClockTheme(content: @Composable () -> Unit) {
-    MaterialTheme(
-        colors = lightColors(),
-        typography = Typography(),
-        shapes = Shapes(),
-        content = content
-    )
 }
