@@ -46,4 +46,26 @@ class BerlinClockActivityTest {
         }
     }
 
+    @Test
+    fun shouldDisplayHourLamps(){
+        with(composeTestRule){
+            val topHour1 = onNodeWithTag("topHourLamp1")
+            val topHour2 = onNodeWithTag("topHourLamp2")
+            val topHour3 = onNodeWithTag("topHourLamp3")
+            val topHour4 = onNodeWithTag("topHourLamp4")
+            val bottomHour1 = onNodeWithTag("bottomHourLamp1")
+            val bottomHour2 = onNodeWithTag("bottomHourLamp2")
+            val bottomHour3 = onNodeWithTag("bottomHourLamp3")
+            val bottomHour4 = onNodeWithTag("bottomHourLamp4")
+
+            topHour1.assertIsDisplayed()
+            topHour2.assertIsDisplayed()
+            topHour3.assertIsDisplayed()
+            topHour4.assertIsDisplayed()
+            bottomHour1.assertIsDisplayed()
+            bottomHour2.assertIsDisplayed()
+            bottomHour3.assertIsDisplayed()
+            bottomHour4.assertIsDisplayed()
+        }
+    }
 }

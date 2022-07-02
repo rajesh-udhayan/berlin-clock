@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.ripple.LocalRippleTheme
 import androidx.compose.runtime.Composable
@@ -15,7 +16,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.bnpp.berlinclock.model.Hours
 import com.bnpp.berlinclock.ui.theme.BerlinClockTheme
+import com.bnpp.berlinclock.ui.theme.redEnabled
 import com.bnpp.berlinclock.ui.theme.yellowDisabled
 import com.bnpp.berlinclock.ui.theme.yellowEnabled
 
@@ -64,5 +67,39 @@ fun BerlinClockView() {
                     .testTag("secondsLamp")
                     .background(color = color, shape = CircleShape)
             )
+        val topHours = Hours().topLamps
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 16.dp),
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            topHours.forEachIndexed { i, lamp ->
+                Box(
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(80.dp)
+                        .background(color = redEnabled, shape = RoundedCornerShape(4.dp))
+                        .testTag("topHourLamp${i+1}")
+                )
+            }
+        }
+        val bottomHours = Hours().topLamps
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 16.dp),
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            bottomHours.forEachIndexed { i, lamp ->
+                Box(
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(80.dp)
+                        .background(color = redEnabled, shape = RoundedCornerShape(4.dp))
+                        .testTag("bottomHourLamp${i+1}")
+                )
+            }
+        }
     }
 }
