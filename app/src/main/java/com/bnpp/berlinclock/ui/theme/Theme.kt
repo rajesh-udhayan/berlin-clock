@@ -18,11 +18,3 @@ fun BerlinClockTheme(content: @Composable () -> Unit) {
         content = content
     )
 }
-
-object NoRippleTheme : RippleTheme {
-    @Composable
-    override fun defaultColor() = Color.Unspecified
-
-    @Composable
-    override fun rippleAlpha(): RippleAlpha = RippleAlpha(0.0f,0.0f,0.0f,0.0f)
-}

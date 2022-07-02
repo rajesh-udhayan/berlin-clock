@@ -3,10 +3,8 @@ package com.bnpp.berlinclock
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.material.ripple.LocalRippleTheme
@@ -18,7 +16,6 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.bnpp.berlinclock.ui.theme.BerlinClockTheme
-import com.bnpp.berlinclock.ui.theme.NoRippleTheme
 import com.bnpp.berlinclock.ui.theme.yellowDisabled
 import com.bnpp.berlinclock.ui.theme.yellowEnabled
 
@@ -61,17 +58,11 @@ fun BerlinClockView() {
     ) {
         val enabled = true
         val color = if (enabled) yellowEnabled else yellowDisabled
-        CompositionLocalProvider(LocalRippleTheme provides NoRippleTheme) {
-            Button(
+            Box(
                 modifier = Modifier
                     .size(100.dp)
-                    .testTag("secondsButton"),
-                shape = CircleShape,
-                colors = ButtonDefaults.buttonColors(backgroundColor = color),
-                onClick = {
-                }
-            ) {
-            }
-        }
+                    .testTag("secondsLamp")
+                    .background(color = color, shape = CircleShape)
+            )
     }
 }
