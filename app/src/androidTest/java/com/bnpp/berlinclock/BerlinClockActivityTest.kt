@@ -105,4 +105,13 @@ class BerlinClockActivityTest {
             bottomMinutes4.assertIsDisplayed()
         }
     }
+
+    @Test
+    fun shouldDisplayTimeText(){
+        with(composeTestRule){
+            val timeText = onNodeWithTag("timeText")
+
+            timeText.assertIsDisplayed()
+        }
+    }
 }

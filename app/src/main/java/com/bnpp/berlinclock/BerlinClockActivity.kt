@@ -11,9 +11,13 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.bnpp.berlinclock.model.Hours
 import com.bnpp.berlinclock.model.Minutes
 import com.bnpp.berlinclock.ui.theme.BerlinClockTheme
@@ -79,7 +83,7 @@ fun BerlinClockView() {
                         .weight(1f)
                         .height(80.dp)
                         .background(color = redEnabled, shape = RoundedCornerShape(4.dp))
-                        .testTag("topHourLamp${i+1}")
+                        .testTag("topHourLamp${i + 1}")
                 )
             }
         }
@@ -96,7 +100,7 @@ fun BerlinClockView() {
                         .weight(1f)
                         .height(80.dp)
                         .background(color = redEnabled, shape = RoundedCornerShape(4.dp))
-                        .testTag("bottomHourLamp${i+1}")
+                        .testTag("bottomHourLamp${i + 1}")
                 )
             }
         }
@@ -114,7 +118,7 @@ fun BerlinClockView() {
                         .weight(1f)
                         .height(80.dp)
                         .background(color = redEnabled, shape = RoundedCornerShape(4.dp))
-                        .testTag("topMinutesLamp${i+1}")
+                        .testTag("topMinutesLamp${i + 1}")
                 )
             }
         }
@@ -132,9 +136,18 @@ fun BerlinClockView() {
                         .weight(1f)
                         .height(80.dp)
                         .background(color = redEnabled, shape = RoundedCornerShape(4.dp))
-                        .testTag("bottomMinutesLamp${i+1}")
+                        .testTag("bottomMinutesLamp${i + 1}")
                 )
             }
         }
+
+        Spacer(modifier = Modifier.weight(1f))
+        Text(
+            modifier = Modifier.testTag("timeText"),
+            text = "11:59:59",
+            fontSize = 30.sp,
+            color = Color.Black,
+            fontWeight = FontWeight.Bold
+        )
     }
 }
