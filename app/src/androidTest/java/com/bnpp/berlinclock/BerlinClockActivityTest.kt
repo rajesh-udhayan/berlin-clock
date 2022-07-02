@@ -68,4 +68,41 @@ class BerlinClockActivityTest {
             bottomHour4.assertIsDisplayed()
         }
     }
+
+    @Test
+    fun shouldDisplayMinutesLamps(){
+        with(composeTestRule){
+            val topMinutes1 = onNodeWithTag("topMinutesLamp1")
+            val topMinutes2 = onNodeWithTag("topMinutesLamp2")
+            val topMinutes3 = onNodeWithTag("topMinutesLamp3")
+            val topMinutes4 = onNodeWithTag("topMinutesLamp4")
+            val topMinutes5 = onNodeWithTag("topMinutesLamp4")
+            val topMinutes6 = onNodeWithTag("topMinutesLamp4")
+            val topMinutes7 = onNodeWithTag("topMinutesLamp4")
+            val topMinutes8 = onNodeWithTag("topMinutesLamp4")
+            val topMinutes9 = onNodeWithTag("topMinutesLamp4")
+            val topMinutes10 = onNodeWithTag("topMinutesLamp4")
+            val topMinutes11 = onNodeWithTag("topMinutesLamp4")
+            val bottomMinutes1 = onNodeWithTag("bottomMinutesLamp1")
+            val bottomMinutes2 = onNodeWithTag("bottomMinutesLamp2")
+            val bottomMinutes3 = onNodeWithTag("bottomMinutesLamp3")
+            val bottomMinutes4 = onNodeWithTag("bottomMinutesLamp4")
+
+            topMinutes1.assertIsDisplayed()
+            topMinutes2.assertIsDisplayed()
+            topMinutes3.assertIsDisplayed()
+            topMinutes4.assertIsDisplayed()
+            topMinutes5.assertIsDisplayed()
+            topMinutes6.assertIsDisplayed()
+            topMinutes7.assertIsDisplayed()
+            topMinutes8.assertIsDisplayed()
+            topMinutes9.assertIsDisplayed()
+            topMinutes10.assertIsDisplayed()
+            topMinutes11.assertIsDisplayed()
+            bottomMinutes1.assertIsDisplayed()
+            bottomMinutes2.assertIsDisplayed()
+            bottomMinutes3.assertIsDisplayed()
+            bottomMinutes4.assertIsDisplayed()
+        }
+    }
 }

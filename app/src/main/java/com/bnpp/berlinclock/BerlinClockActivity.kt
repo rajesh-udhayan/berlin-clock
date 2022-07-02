@@ -8,15 +8,14 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material.ripple.LocalRippleTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.bnpp.berlinclock.model.Hours
+import com.bnpp.berlinclock.model.Minutes
 import com.bnpp.berlinclock.ui.theme.BerlinClockTheme
 import com.bnpp.berlinclock.ui.theme.redEnabled
 import com.bnpp.berlinclock.ui.theme.yellowDisabled
@@ -98,6 +97,42 @@ fun BerlinClockView() {
                         .height(80.dp)
                         .background(color = redEnabled, shape = RoundedCornerShape(4.dp))
                         .testTag("bottomHourLamp${i+1}")
+                )
+            }
+        }
+
+        val topMinutes = Minutes().topLamps
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 16.dp),
+            horizontalArrangement = Arrangement.spacedBy(4.dp)
+        ) {
+            topMinutes.forEachIndexed { i, lamp ->
+                Box(
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(80.dp)
+                        .background(color = redEnabled, shape = RoundedCornerShape(4.dp))
+                        .testTag("topMinutesLamp${i+1}")
+                )
+            }
+        }
+
+        val bottomMinutes = Minutes().bottomLamps
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 16.dp),
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            bottomMinutes.forEachIndexed { i, lamp ->
+                Box(
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(80.dp)
+                        .background(color = redEnabled, shape = RoundedCornerShape(4.dp))
+                        .testTag("bottomMinutesLamp${i+1}")
                 )
             }
         }
