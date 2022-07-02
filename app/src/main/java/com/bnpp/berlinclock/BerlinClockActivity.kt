@@ -26,12 +26,16 @@ import com.bnpp.berlinclock.ui.theme.BerlinClockTheme
 import com.bnpp.berlinclock.ui.theme.redEnabled
 import com.bnpp.berlinclock.ui.theme.yellowDisabled
 import com.bnpp.berlinclock.ui.theme.yellowEnabled
+import com.bnpp.berlinclock.viewmodel.BerlinClockViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
 private val currentTime = mutableStateOf("00:00:00")
 
 class BerlinClockActivity : ComponentActivity() {
+
+    private val viewModel: BerlinClockViewModel by viewModel()
 
     private lateinit var timer: CountDownTimer
 
@@ -53,6 +57,7 @@ class BerlinClockActivity : ComponentActivity() {
                 val mTime: String = SimpleDateFormat(TIME_FORMAT, Locale.getDefault()).format(
                     Date()
                 )
+                viewModel.updateTime(mTime)
                 currentTime.value = mTime
             }
             override fun onFinish() {
