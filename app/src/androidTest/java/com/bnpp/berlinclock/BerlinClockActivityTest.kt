@@ -38,11 +38,12 @@ class BerlinClockActivityTest {
     }
 
     @Test
-    fun shouldDisplaySecondsButton(){
+    fun shouldDisplaySecondsLamp(){
         with(composeTestRule){
             val secondsButton = onNodeWithTag("secondsLamp")
 
             secondsButton.assertIsDisplayed()
         }
     }
+
 }
