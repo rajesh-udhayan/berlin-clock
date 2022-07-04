@@ -21,6 +21,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.bnpp.berlinclock.model.BerlinClockData
 import com.bnpp.berlinclock.model.Minutes
 import com.bnpp.berlinclock.ui.theme.*
 import com.bnpp.berlinclock.viewmodel.BerlinClockViewModel
@@ -96,8 +97,8 @@ fun BerlinClockView() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         val viewModel = getViewModel<BerlinClockViewModel>()
-        val berlinClock = viewModel.berlinClockTime.observeAsState().value
-        val secondsLampOn = berlinClock?.secondsLamp != LampColor.OFF
+        val berlinClock by viewModel.berlinClockTime.observeAsState(BerlinClockData.default())
+        val secondsLampOn = berlinClock.secondsLamp != LampColor.OFF
         val color = if (secondsLampOn) yellowEnabled else yellowDisabled
             Box(
                 modifier = Modifier
@@ -105,14 +106,14 @@ fun BerlinClockView() {
                     .testTag("secondsLamp")
                     .background(color = color, shape = CircleShape)
             )
-        val topHours = berlinClock?.hoursLamp?.topLamps
+        val topHours = berlinClock.hoursLamp.topLamps
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 16.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            topHours?.forEachIndexed { i, lamp ->
+            topHours.forEachIndexed { i, lamp ->
                 val topHoursLampOn = lamp != LampColor.OFF
                 val lampColor = if (topHoursLampOn) redEnabled else redDisabled
                 Box(
@@ -124,14 +125,14 @@ fun BerlinClockView() {
                 )
             }
         }
-        val bottomHours = berlinClock?.hoursLamp?.bottomLamps
+        val bottomHours = berlinClock.hoursLamp.bottomLamps
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 16.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            bottomHours?.forEachIndexed { i, lamp ->
+            bottomHours.forEachIndexed { i, lamp ->
                 val bottomHoursLampOn = lamp != LampColor.OFF
                 val lampColor = if (bottomHoursLampOn) redEnabled else redDisabled
                 Box(
@@ -144,14 +145,14 @@ fun BerlinClockView() {
             }
         }
 
-        val topMinutes = berlinClock?.minutesLamp?.topLamps
+        val topMinutes = berlinClock.minutesLamp.topLamps
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 16.dp),
             horizontalArrangement = Arrangement.spacedBy(4.dp)
         ) {
-            topMinutes?.forEachIndexed { i, lamp ->
+            topMinutes.forEachIndexed { i, lamp ->
                 val lampColor: Color
                 if (i == 2 || i == 5 || i == 8){
                     lampColor = if (lamp != LampColor.OFF) redEnabled else redDisabled
@@ -168,14 +169,14 @@ fun BerlinClockView() {
             }
         }
 
-        val bottomMinutes = berlinClock?.minutesLamp?.bottomLamps
+        val bottomMinutes = berlinClock.minutesLamp.bottomLamps
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 16.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            bottomMinutes?.forEachIndexed { i, lamp ->
+            bottomMinutes.forEachIndexed { i, lamp ->
                 val lampColor: Color = if (lamp != LampColor.OFF) redEnabled else redDisabled
                 Box(
                     modifier = Modifier
